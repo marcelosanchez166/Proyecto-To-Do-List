@@ -1,0 +1,84 @@
+{% extends '/base.html' %}
+
+{% block title %}
+    To Do List
+{% endblock %}
+
+{% block CustomCSS %}<!-- Este bloque esta creado en la plantilla base.html y lo llamo aca para no ponerlo en la plantilla base.html de esa forma solo afectara a la plantilla logn.html -->
+    <link href="{{url_for('static', filename='css/login.css')}}" rel="stylesheet">
+{% endblock %}
+
+
+<!-- creamos el block del body que hereda desde base.html con su cierre -->
+{% block body %}
+  {% include './navbar.html' %}
+    <div class="container py-3">
+      <!-- este div contiene el bloque container que es el que tiene el h1 con el Hola mundo en la plantilla index.html -->
+      {% block container %}
+        <!-- <div class="row"> -->
+          <!-- Columna izquierda (formulario y tabla) -->
+          <!-- <div class="col-md-6"> -->
+            <form class="form-signin text-center" action="{{ url_for('task') }}" method="post">
+              <!-- <img class="mb-4" src="/docs/4.6/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+              <h1 class="h3 mb-3 font-weight-normal">Add Task a To Do List App</h1>
+              <label for="tarea" class="sr-only py-2">Task</label> 
+              <!-- para que un input pueda mostrar lo que se extrae de una consulta en la aplicacion y que use eso para rellenar el input en el formulario como para cuando 
+              hay que actualizar algun dato se le pone el parametro value a cada input por ejemplo value="{{user}}" value="{{name}}" 
+              Para que se vean en el input cuando se va actualizar-->
+              <input type="text" id="tarea" class="form-control" name="tarea" placeholder="task" required autofocus>
+              <br>
+              <button class="btn btn-lg btn-primary btn-block " type="submit">Add Task</button>
+            </form>
+
+              <br>
+              {% with messages = get_flashed_messages %}
+                {% if messages %}
+                  {% for category, message in messages %}
+                    {% if category=='warning' %}<!-- Si la categoria es igual a warning se va a mostrar en amarillo el msj -->  
+                          <!-- <div class="alert alert-{{category}}"> {{message}} </div> -->
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong style="font-size: 14px;">{{ message }}</strong><!-- en esta etiqueta mandamos a imprimir el msj que se envia desde la ruta login  -->
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% else %}
+                      <div class="alert alert-success alert-dismissible fade show" role="alert">
+                          <strong style="font-size: 14px;">{{ message }}</strong> <!-- en esta etiqueta mandamos a imprimir el msj que se envia desde la ruta logout  -->
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                   {% endif %}
+                  {% endfor %}
+                {% endif %}
+              {% endwith %}
+              <br>
+
+            <table class="table table-bordered table-dark table-responsive">
+              <tr class="col-md-6 mx-auto text-center">
+                <th>Tareas</th>
+                <th>Estado</th>
+                <th>Opciones</th>
+              </tr>
+
+              {% for task in send_tasks  %}
+                <tr class="col-md-6 mx-auto text-center">
+                  <td>{{ task[1] }}</td>
+                  <td>{{ task[2] }}</td>
+                  <td>
+                    <div class="col-md-6 mx-auto">
+                      <a class="btn btn-info btn-block text-white" href="{{ url_for('edit_task', id=task[0]) }}">Edit Task</a>
+                      <a class="btn btn-danger btn-block text-white" href="{{ url_for('delete_task', id=task[0]) }}">Delete Task</a>
+                      <a class="btn btn-success btn-block text-white" href="{{ url_for('done_task', id=task[0]) }}">Done</a>
+                  </div>                  
+                </td>
+                </tr>
+              {% endfor %}
+            </table>
+          <!-- </div> -->
+          <br>
+        <!-- </div>     -->
+      {% endblock %}
+    </div>
+{% endblock %}

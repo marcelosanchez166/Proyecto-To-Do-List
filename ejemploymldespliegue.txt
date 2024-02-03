@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: htc-ea-sef-reception
+  labels:
+    app: htc-ea-sef-reception
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: htc-ea-sef-reception
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: htc-ea-sef-reception
+        version: v1
+    spec:
+      containers:
+        - name: htc-ea-sef-reception
+          image: us-sanjose-1.ocir.io/axcoy6oa4q4x/htc-ea-sef-reception:9193
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: nfs
+              mountPath: "/SEF/"
+          resources:
+            limits:
+              memory: "1024M"
+              cpu: "150m"
+      volumes:
+        - name: nfs
+          persistentVolumeClaim:
+            claimName: pvc-sef-reception
+            readOnly: false
+      imagePullSecrets:
+        - name: safepbs
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: htc-ea-sef-reception
+  labels:
+    app: htc-ea-sef-reception
+    service: htc-ea-sef-reception
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    name: http
+    targetPort: 80
+    nodePort: 30409
+  selector:
+    app:  htc-ea-sef-reception
+  type: NodePort

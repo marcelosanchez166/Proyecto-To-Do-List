@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: To_Do_List
+  labels:
+    app: To_Do_List
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: To_Do_List
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: To_Do_List
+        version: v1
+    spec:
+      containers:
+        - name: To_Do_List
+          image: us-sanjose-1.ocir.io/axcoy6oa4q4x/To_Do_List:9193
+          imagePullPolicy: Always
+          # volumeMounts:
+          #   - name: nfs
+          #     mountPath: "/SEF/"
+          resources:
+            limits:
+              memory: "1024M"
+              cpu: "150m"
+      # volumes:
+      #   - name: nfs
+      #     persistentVolumeClaim:
+      #       claimName: pvc-sef-reception
+      #       readOnly: false
+      # imagePullSecrets:
+      #   - name: safepbs
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: To_Do_List
+  labels:
+    app: To_Do_List
+    service: To_Do_List
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    name: http
+    targetPort: 80
+    nodePort: 30001
+  selector:
+    app:  To_Do_List
+  type: NodePort

@@ -37,9 +37,9 @@ db=MySQL(app)#Declaro una variable que instanciara el conector de mysql y se le 
 #sobre la cual va a tener efecto para que se pueda conectar a mysql y se usara realizar conexiones atravez de los modelos, los modelos seran unas clases que se van a crear nos 
 #permitira tener metodos para hacer CRUD registro de sesion etc que vamos a necesitar para conectarnos a una base
 
-
+"""El decorador @login_manager_app.user_loader llama internamente el id del usuario que se captura con el metodo login_user, luego ese id si es valido se envia hacia el metodo de clase ModeloUsuario.obtener_por_id ademas de la instancia de la base de datos """
 @login_manager_app.user_loader #Se debe implementar para que se gestionen correctamente las sesiones atravez de la libreria flask_login Si no creamos el decorador login_manager_app dara este error Exception: Missing user_loader or request_loader. Refer to http://flask-login.readthedocs.io/#how-it-works for more info. cuando estemos usando login_user y Login_Manager de flask
-def load_user(id):#Se crear la funcion load_user y se le pasa el id que vamos a cargar del usuario
+def load_user(id):#Se creara la funcion load_user y se le pasa el id que vamos a cargar del usuario
     print("Id de la funcion loginmanager",id)
     return ModeloUsuario.obtener_por_id(db, id) #retornamos el metodo obtener_por_id de la clase ModeloUsuario del archivo modelousuario.py y se le pasaran dos valores la conexion a la base y el id que vamos a cargar del usuario
 

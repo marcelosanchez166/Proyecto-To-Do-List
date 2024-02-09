@@ -31,7 +31,7 @@
             </form>
 
               <br>
-              {% with messages = get_flashed_messages %}
+              {% with messages = get_flashed_messages(with_categories=True) %}
                 {% if messages %}
                   {% for category, message in messages %}
                     {% if category=='warning' %}<!-- Si la categoria es igual a warning se va a mostrar en amarillo el msj -->  
@@ -49,7 +49,7 @@
                               <span aria-hidden="true">&times;</span>
                           </button>
                       </div>
-                   {% endif %}
+                  {% endif %}
                   {% endfor %}
                 {% endif %}
               {% endwith %}

@@ -52,7 +52,7 @@ class ModeloUsuario():
                 usuario_logueado= Usuario(id=data[0], username=data[1], password=data[2], email=data[3])#Creamos una instancia de la clase Usuario y le pasamos las posiciones 0 que corresponde al id del usuario 1 de Nombre_usuario None para la clave ya que no la usaremos y la variable tipousuario que contiene las posiciones de 2 y 3 de la tupla data que son el id del tipo y el nombre del tipo
                 return usuario_logueado #Este se almacena en la funcion load_user del archivo __init__.py
             else:
-                 # Puedes decidir qué hacer si no se encuentra un usuario con ese ID
+                # Puedes decidir qué hacer si no se encuentra un usuario con ese ID
                 return None
         except Exception as ex:
             raise Exception(ex)

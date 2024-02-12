@@ -19,6 +19,9 @@
           <!-- Columna izquierda (formulario y tabla) -->
           <!-- <div class="col-md-6"> -->
             <form class="form-signin text-center" action="{{ url_for('task') }}" method="post">
+
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><!--Este input generara el token para la seguridad de nuestros formularios-->
+
               <!-- <img class="mb-4" src="/docs/4.6/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
               <h1 class="h3 mb-3 font-weight-normal">Add Task a To Do List App</h1>
               <label for="tarea" class="sr-only py-2">Task</label> 

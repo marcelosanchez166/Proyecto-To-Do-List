@@ -16,11 +16,11 @@
     {% block container %}
         <form class="form-signin text-center form-responsive" action="{{ url_for('register') }} "  method="post">
 
-            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><!--Este input generara el token para la seguridad de nuestros formularios-->
+            <input type="hidden" name="csrf_token" ><!--Este input generara el token para la seguridad de nuestros formularios-->
 
             <img class="mb-4" src="/docs/4.6/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
-            <input type="text" id="username" class="form-control" name="username" placeholder="username" required autofocus minlength="8" maxlength="20">
+            <input type="text" id="username" class="form-control" name="username" placeholder="username" required autofocus minlength="5" maxlength="20">
             <label for="username" class="sr-only py-2" >Username</label>
 
             <input type="password" name="password" id="password" class="form-control" placeholder="password" required>

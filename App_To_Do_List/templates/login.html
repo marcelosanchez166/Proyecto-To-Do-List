@@ -15,7 +15,7 @@
     {% endblock %}
     <form class="form-signin text-center" action="{{ url_for('login') }}"  method="post">
 
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><!--Este input generara el token para la seguridad de nuestros formularios-->
+        <input type="hidden" name="csrf_token" ><!--Este input generara el token para la seguridad de nuestros formularios-->
 
         <img class="mb-4" src="/docs/4.6/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>

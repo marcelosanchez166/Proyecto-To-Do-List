@@ -130,6 +130,7 @@ def task():
         #return render_template("task.html")  # Asegúrate de tener este bloque return para solicitudes GET
     else:#Si no esta logueado el usuario lo rederijira hacia la ruta login para que se pueda loguear
         return redirect(url_for('login'))
+    
 
 
 @app.route("/delete_task/<int:id>")
@@ -236,4 +237,4 @@ def logout():
 
 if __name__ == "__main__":
     # app.register_blueprint(register_user)
-    app.run(debug=True, host="0.0.0.0", port="5001")
+    app.run(debug=True, host="0.0.0.0", port="5002")

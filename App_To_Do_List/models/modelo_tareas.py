@@ -9,7 +9,7 @@ class ModeloTareas():
         try:
             # if current_user.is_authenticated:
                 cursor = db.connection.cursor()
-                               # Verificar si la tarea ya existe para evitar duplicados
+                # Verificar si la tarea ya existe para evitar duplicados
                 existing_task_sql = """SELECT id FROM tareas WHERE nombre_tarea = '{}' AND id_usuario = '{}'""".format(new_task.nombre_tarea, id_user)
                 cursor.execute(existing_task_sql)
                 existing_task = cursor.fetchone()

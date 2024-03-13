@@ -94,13 +94,14 @@ def register():
     return render_template("register.html")
 
 
-@app.route("/task", methods=["GET", "POST"])
 @login_required
+@app.route("/task", methods=["GET", "POST"])
 def task():
     print("usuario autenticado desde task ", current_user.is_authenticated )
     if current_user.is_authenticated:#PReguntamos si el usuario esta autenticado si esta autenticado lo redirije haci la plantilla index.html
         cursor = db.connection.cursor()
-        sql = """SELECT id FROM usuarios WHERE id = '{}'""".format(current_user.id)
+        sql = """SELECT id, username, password, email FROM usuarios WHERE id = '{}'""".format(current_user.id)
+        print(current_user.id,"Imprimiendo el current_user.id")
         cursor.execute(sql)
         data = cursor.fetchone()
         if request.method == "POST":
@@ -130,11 +131,11 @@ def task():
         #return render_template("task.html")  # Asegúrate de tener este bloque return para solicitudes GET
     else:#Si no esta logueado el usuario lo rederijira hacia la ruta login para que se pueda loguear
         return redirect(url_for('login'))
-    
 
 
-@app.route("/delete_task/<int:id>")
+
 @login_required
+@app.route("/delete_task/<int:id>")
 def delete_task(id):#EL id lo recibo del boton eliminar que esta en la plantilla task.html que tiene un atributo id=task[0]
     print(id, "imprimiendo el id que recibo a travez de la url del boto de la plantilla task.html ")
     cursor = db.connection.cursor()
@@ -152,7 +153,6 @@ def delete_task(id):#EL id lo recibo del boton eliminar que esta en la plantilla
         #return redirect(url_for("task"))
         else:
             flash("Error deleting the task", "warning")#Si la eliminacion de la tarea en el metodo de clase  ModeloTareas.delete_tarea falla se mostrara este msj
-
         # Obtener todas las tareas asociadas al usuario después de eliminar la tarea en el metodo de clase  ModeloTareas.delete_tarea, esta nueva lista de tareas se envia con la renderizacion de la plantilla task.html de la siguiente forma return render_template("task.html", send_tasks=send_tasks)
         select_all_tasks_sql = """SELECT id, nombre_tarea, estado FROM tareas WHERE id_usuario = '{}'""".format(current_user.id)
         cursor.execute(select_all_tasks_sql)
@@ -163,9 +163,8 @@ def delete_task(id):#EL id lo recibo del boton eliminar que esta en la plantilla
 
 
 
-
-@app.route("/edit_task/<int:id>", methods=["GET", "POST"])
 @login_required
+@app.route("/edit_task/<int:id>", methods=["GET", "POST"])
 def edit_task(id):
     print(id, "Id que recibo de la plantilla task del boton edit_task con atributo id=task[0]")
     cursor = db.connection.cursor()
@@ -221,9 +220,6 @@ def done_task(id):
     cursor.execute(select_all_tasks_sql)
     send_tasks = cursor.fetchall()
     return render_template("task.html", send_tasks=send_tasks)
-
-        
-
 
 
 # Ruta para cerrar sesión

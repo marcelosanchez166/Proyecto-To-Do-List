@@ -56,7 +56,8 @@ class ModeloUsuario():
                 return None
         except Exception as ex:
             raise Exception(ex)
-    
+
+
     @classmethod
     def RegisterUser(self, db, usuario_re):
         print(usuario_re.username,"usuarios enviados desde instancia de app", usuario_re.password, usuario_re.email,"register ssssss")

@@ -11,7 +11,7 @@ spec:
  mountOptions:
   - nosuid
  nfs:
-  server: 198.20.3.7
+  server: 198.20.4.2
   path: "/SEF/SEF/"
   readOnly: false
 

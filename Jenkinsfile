@@ -9,8 +9,7 @@ pipeline {
         
         // Define tus variables de entorno aquí o usa Credenciales de Jenkins
         SECRET_KEY = 'B!1w8*NAt1T^%kvhUI*S^_'
-        PORT = '5001'
-        HOST = '0.0.0.0'
+
         
         MYSQL_HOST = '11.11.11.97'
         MYSQL_USER = 'root'

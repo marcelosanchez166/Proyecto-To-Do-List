@@ -77,6 +77,9 @@ pipeline {
                     sh """
                     docker run --name ${DOCKER_CONTAINER} --env-file ${ENV_FILE} -p 5002:5002 -d ${DOCKER_IMAGE}
                     """
+		    //sh """
+                    //docker run --name ${DOCKER_CONTAINER} --env-file ${ENV_FILE} -p 5002:5002 -d ${DOCKER_IMAGE}
+                    //"""
                 }
             }
         }

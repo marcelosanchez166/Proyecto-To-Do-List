@@ -75,7 +75,7 @@ pipeline {
 
                     // Ejecuta el contenedor Docker con el archivo .env
                     sh """
-                    docker run --name ${DOCKER_CONTAINER} --env-file ${ENV_FILE} -p 5002:5002 -d ${DOCKER_IMAGE}
+                    docker run --name ${DOCKER_CONTAINER}  -p 5002:5002 -d ${DOCKER_IMAGE}
                     """
 		    //sh """
                     //docker run --name ${DOCKER_CONTAINER} --env-file ${ENV_FILE} -p 5002:5002 -d ${DOCKER_IMAGE}

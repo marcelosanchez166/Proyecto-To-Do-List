@@ -3,8 +3,8 @@ pipeline {
 
     environment {
         REPO_URL = 'https://github.com/marcelosanchez166/Proyecto-To-Do-List.git'
-        DOCKER_IMAGE = 'TodoList:latest'
-        DOCKER_CONTAINER = 'TodoList'
+        DOCKER_IMAGE = 'todolist:latest'
+        DOCKER_CONTAINER = 'todoList'
         ENV_FILE = '/home/oracle/todolits/.env'
         
         // Define tus variables de entorno aquí o usa Credenciales de Jenkins

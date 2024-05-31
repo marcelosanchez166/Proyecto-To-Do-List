@@ -26,6 +26,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
+                git init
                 git url: "${REPO_URL}"
             }
         }

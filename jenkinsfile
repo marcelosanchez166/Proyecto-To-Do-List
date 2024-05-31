@@ -5,22 +5,22 @@ pipeline {
         REPO_URL = 'https://github.com/tu_usuario/tu_proyecto.git'
         DOCKER_IMAGE = 'TodoList:latest'
         DOCKER_CONTAINER = 'TodoList'
-        ENV_FILE = 'path/to/.env'
+        ENV_FILE = '/home/oracle/todolits/.env'
         
         // Define tus variables de entorno aquí o usa Credenciales de Jenkins
-        SECRET_KEY = credentials('SECRET_KEY')
-        PORT = credentials('PORT')
-        HOST = credentials('HOST')
+        SECRET_KEY = 'B!1w8*NAt1T^%kvhUI*S^_'
+        PORT = '5001'
+        HOST = '0.0.0.0'
         
-        MYSQL_HOST = credentials('MYSQL_HOST')
-        MYSQL_USER = credentials('MYSQL_USER')
-        MYSQL_PASSWORD = credentials('MYSQL_PASSWORD')
+        MYSQL_HOST = '11.11.11.97'
+        MYSQL_USER = 'root'
+        MYSQL_PASSWORD = 'Meliodas1506'
         
-        MAIL_USERNAME = credentials('MAIL_USERNAME')
-        MAIL_PASSWORD = credentials('MAIL_PASSWORD')
-        MAIL_SERVER = credentials('MAIL_SERVER')
-        MAIL_PORT = credentials('MAIL_PORT')
-        MAIL_USE_TLS = credentials('MAIL_USE_TLS')
+        MAIL_USERNAME = 'marcelosanchez166@gmail.com'
+        MAIL_PASSWORD = 'rlhb rqnk ofer dyqf'
+        MAIL_SERVER = 'smtp.googlemail.com '
+        MAIL_PORT = '587'
+        MAIL_USE_TLS = 'True'
     }
 
     stages {

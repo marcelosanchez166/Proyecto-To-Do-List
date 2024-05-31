@@ -2,7 +2,7 @@ pipeline {
     agent { label 'slave1' }
 
     environment {
-        REPO_URL = 'https://github.com/tu_usuario/tu_proyecto.git'
+        REPO_URL = 'https://github.com/marcelosanchez166/Proyecto-To-Do-List.git'
         DOCKER_IMAGE = 'TodoList:latest'
         DOCKER_CONTAINER = 'TodoList'
         ENV_FILE = '/home/oracle/todolits/.env'
@@ -18,7 +18,7 @@ pipeline {
         
         MAIL_USERNAME = 'marcelosanchez166@gmail.com'
         MAIL_PASSWORD = 'rlhb rqnk ofer dyqf'
-        MAIL_SERVER = 'smtp.googlemail.com '
+        MAIL_SERVER = 'smtp.googlemail.com'
         MAIL_PORT = '587'
         MAIL_USE_TLS = 'True'
     }
@@ -26,7 +26,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git url: "${REPO_URL}"
+                git url: "${REPO_URL}", branch: 'master', credentialsId: 'github-credentials'
             }
         }
 

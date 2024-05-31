@@ -5,21 +5,21 @@ pipeline {
         REPO_URL = 'https://github.com/marcelosanchez166/Proyecto-To-Do-List.git'
         DOCKER_IMAGE = 'todolist:latest'
         DOCKER_CONTAINER = 'todoList'
-        ENV_FILE = '/home/oracle/todolits/.env'
+        //ENV_FILE = '/home/oracle/todolits/.env'
         
         // Define tus variables de entorno aquí o usa Credenciales de Jenkins
-        SECRET_KEY = 'B!1w8*NAt1T^%kvhUI*S^_'
+        //SECRET_KEY = 'B!1w8*NAt1T^%kvhUI*S^_'
 
         
-        MYSQL_HOST = '11.11.11.97'
-        MYSQL_USER = 'root'
-        MYSQL_PASSWORD = 'Meliodas1506'
+        //MYSQL_HOST = '11.11.11.97'
+        //MYSQL_USER = 'root'
+        //MYSQL_PASSWORD = 'Meliodas1506'
         
-        MAIL_USERNAME = 'marcelosanchez166@gmail.com'
-        MAIL_PASSWORD = 'rlhb rqnk ofer dyqf'
-        MAIL_SERVER = 'smtp.googlemail.com'
-        MAIL_PORT = '587'
-        MAIL_USE_TLS = 'True'
+        //MAIL_USERNAME = 'marcelosanchez166@gmail.com'
+        //MAIL_PASSWORD = 'rlhb rqnk ofer dyqf'
+        //MAIL_SERVER = 'smtp.googlemail.com'
+        //MAIL_PORT = '587'
+        //MAIL_USE_TLS = 'True'
     }
 
     stages {

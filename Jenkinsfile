@@ -29,30 +29,30 @@ pipeline {
             }
         }
 
-        stage('Create .env File') {
-            steps {
-                script {
-                    // Crea el archivo .env con las variables necesarias
-                    sh """
-                    cat <<EOF > ${ENV_FILE}
-SECRET_KEY=${SECRET_KEY}
-PORT=${PORT}
-HOST=${HOST}
+        //stage('Create .env File') {
+          //  steps {
+            //    script {
+              //      // Crea el archivo .env con las variables necesarias
+                //    sh """
+                  //  cat <<EOF > ${ENV_FILE}
+					//SECRET_KEY=${SECRET_KEY}
+					//PORT=${PORT}
+					//HOST=${HOST}
 
-MYSQL_HOST=${MYSQL_HOST}
-MYSQL_USER=${MYSQL_USER}
-MYSQL_PASSWORD=${MYSQL_PASSWORD}
+					//MYSQL_HOST=${MYSQL_HOST}
+					//MYSQL_USER=${MYSQL_USER}
+					//MYSQL_PASSWORD=${MYSQL_PASSWORD}
 
-MAIL_USERNAME=${MAIL_USERNAME}
-MAIL_PASSWORD=${MAIL_PASSWORD}
-MAIL_SERVER=${MAIL_SERVER}
-MAIL_PORT=${MAIL_PORT}
-MAIL_USE_TLS=${MAIL_USE_TLS}
-EOF
-                    """
-                }
-            }
-        }
+					//MAIL_USERNAME=${MAIL_USERNAME}
+					//MAIL_PASSWORD=${MAIL_PASSWORD}
+				//	MAIL_SERVER=${MAIL_SERVER}
+					//MAIL_PORT=${MAIL_PORT}
+					//MAIL_USE_TLS=${MAIL_USE_TLS}
+					//EOF
+                   // """
+               // }
+            //}
+       // }
 
         stage('Build Docker Image') {
             steps {

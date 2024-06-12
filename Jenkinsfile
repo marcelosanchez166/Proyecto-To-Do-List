@@ -5,6 +5,8 @@ pipeline {
         REPO_URL = 'https://github.com/marcelosanchez166/Proyecto-To-Do-List.git'
         DOCKER_IMAGE = 'todolist:latest'
         DOCKER_CONTAINER = 'todoList'
+        DOCKER_NETWORK = 'microsrv'
+	MYSQL_PORT = '5002'
         //ENV_FILE = '/home/oracle/todolits/.env'
     }
 
@@ -61,7 +63,10 @@ pipeline {
 
                     // Ejecuta el contenedor Docker con el archivo .env
                     sh """
-                    docker run --name ${DOCKER_CONTAINER}  -p 5002:5002 -d ${DOCKER_IMAGE}
+		    docker run --name ${DOCKER_CONTAINER} \
+		    --network ${DOCKER_NETWORK} \
+		    -p ${MYSQL_PORT}:${MYSQL_PORT} \
+		    -d ${DOCKER_IMAGE}
                     """
 		    //sh """
                     //docker run --name ${DOCKER_CONTAINER} --env-file ${ENV_FILE} -p 5002:5002 -d ${DOCKER_IMAGE}

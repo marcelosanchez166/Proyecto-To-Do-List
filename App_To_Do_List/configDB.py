@@ -5,7 +5,7 @@ class Config:#Clase que servira para tener la clave secreta que se pondra mas ad
 
 
 class DevelopmentConfig(Config):#clase que hereda de la clase Config y que activara el modo debug en true para que los cambios los tome en automatico el server
-    MYSQL_HOST="11.11.11.18"
+    MYSQL_HOST="11.11.11.19"
     MYSQL_USER="root"
     MYSQL_PASSWORD="Meliodas1506"
     MYSQL_DB="todolist"

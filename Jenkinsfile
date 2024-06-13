@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'slave1' }
+    agent { label 'Slave1' }
 
     environment {
         REPO_URL = 'https://github.com/marcelosanchez166/Proyecto-To-Do-List.git'

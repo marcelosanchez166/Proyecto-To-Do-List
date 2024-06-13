@@ -6,7 +6,7 @@ pipeline {
         DOCKER_IMAGE = 'todolist:latest'
         DOCKER_CONTAINER = 'todoList'
         DOCKER_NETWORK = 'microsrv'
-	MYSQL_PORT = '5002'
+	PORT = '5002'
         //ENV_FILE = '/home/oracle/todolits/.env'
     }
 
@@ -65,7 +65,7 @@ pipeline {
                     sh """
 		    docker run --name ${DOCKER_CONTAINER} \
 		    --network ${DOCKER_NETWORK} \
-		    -p ${MYSQL_PORT}:${MYSQL_PORT} \
+		    -p ${PORT}:${PORT} \
 		    -d ${DOCKER_IMAGE}
                     """
 		    //sh """
